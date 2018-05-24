@@ -2,20 +2,18 @@
 
 // Basic express setup:
 
-const PORT = 8080;
 const express = require('express');
 
 const bodyParser = require('body-parser');
 
-const app = express();
-
 const MongoClient = require('mongodb').MongoClient;
 
+const PORT = 8080;
+const app = express();
 const MONGODB_URI = 'mongodb://localhost:27017/tweeter';
 
-
 app.use(bodyParser.urlencoded({
-  extended: true,
+  extended: true, 
 }));
 app.use(express.static('public'));
 

@@ -5,7 +5,7 @@ $(document).ready(function () {
     if (($(this).val().length) > maxChar) {
       $(this).addClass('invalid');
     } else {
-      $(this).removeClass()
+      $(this).removeClass();
     }
-  })
-})
+  });
+});
