@@ -12,48 +12,42 @@ $(document).ready(function () {
   }
 
   function elapsedTime(epochDate) {
-    let timeSeconds = Math.floor((Date.now() - epochDate) / 1000); // returns seconds passed since post
+    const timeSeconds = Math.floor((Date.now() - epochDate) / 1000); // calculates time passed and returns an elapsed message
     const hour = (60 * 60);
     const day = (hour * 24);
     const week = (day * 7);
-    let time = 0;
     if (timeSeconds < 60) {
       return ('Just now');
     } else if (timeSeconds < hour) {
-      let time = (Math.floor(timeSeconds / 60));
+      const time = (Math.floor(timeSeconds / 60));
       if (time > 1) {
-        return (time + ' minutes ago');
-      } else {
-        return (time + ' minute ago');
+        return (`${time} minutes ago`);
       }
+      return (`${time} minute ago`);
     } else if (timeSeconds < day) {
-      let time = (Math.floor(timeSeconds / hour));
+      const time = (Math.floor(timeSeconds / hour));
       if (time > 1) {
-        return (time + ' hours ago');
-      } else {
-        return (time + ' hour ago');
+        return (`${time} hours ago`);
       }
+      return (`${time} hour ago`);
     } else if (timeSeconds < week) {
-      let time = (Math.floor(timeSeconds / day));
+      const time = (Math.floor(timeSeconds / day));
       if (time > 1) {
-        return (time + ' days ago');
-      } else {
-        return (time + ' day ago');
+        return (`${time} days ago`);
       }
+      return (`${time} day ago`);
     } else if (timeSeconds > (52 * week)) {
-      let time = (Math.floor(timeSeconds / (52 * week)));
+      const time = (Math.floor(timeSeconds / (52 * week)));
       if (time > 1) {
-        return (time + ' years ago');
-      } else {
-        return (time + ' year ago');
+        return (`${time} years ago`);
       }
+      return (`${time} year ago`);
     } else {
-      let time = (Math.floor(timeSeconds / week));
+      const time = (Math.floor(timeSeconds / week));
       if (time > 1) {
-        return (time + ' weeks ago');
-      } else {
-        return (time + ' week ago');
+        return (`${time} weeks ago`);
       }
+      return (`${time} week ago`);
     }
   }
 
