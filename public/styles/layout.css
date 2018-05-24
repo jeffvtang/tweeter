@@ -93,3 +93,22 @@ article:hover {
 article:hover .icons {
   display: inline;
 }
+
+.icons .like {
+  color: #62c5b6;
+  background-color: #ffffff;
+  border-style: none;
+  padding: 0px;
+}
+
+.icons .like:hover {
+  color: #ff0000;
+}
+
+.icons .likecounter {
+  display: none;
+}
+
+.icons.liked .likecounter {
+  display: inline
+}

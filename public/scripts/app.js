@@ -67,13 +67,17 @@ $(document).ready(function () {
         <span class='icons'>
           <i class='fas fa-flag'></i>
           <i class='fas fa-retweet'></i>
-          <i class='fas fa-heart'></i>
+          <button class='like' id='${tweetInput._id}'>
+            <i class='fas fa-heart'></i>
+          </button>
+          <span class='likecounter'>${tweetInput.likes}</span>
         </span>
       </footer>
     </article>
     `);
     return $tweet;
   }
+
 
   function renderTweets(tweets) {
     $('#tweets-container').empty();
@@ -94,6 +98,19 @@ $(document).ready(function () {
       $('textarea').focus();
     });
   });
+
+  $('.fas fa-heart').click(function () {
+    console.log($(this))
+    console.log('working')
+    // alert(this)
+    $('.icons').addClass('liked')
+  })
+  
+  $('.like').click(function () {
+    console.log($(this))
+    console.log('working')
+    // alert(this)
+  })
 
   $('form').submit(function (event) {
     event.preventDefault();
