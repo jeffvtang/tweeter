@@ -11,6 +11,12 @@ $(document).ready(function () {
     return div.innerHTML;
   }
 
+function convertEpochDate(epochDate) {
+  let date = new Date(epochDate)
+  date = date.toDateString()
+  return date
+}
+
   function createTweetElement(tweetInput) {
     let $tweet = (`
     <article class='tweet'>
@@ -23,7 +29,7 @@ $(document).ready(function () {
       </header>
       <section class='tweet'>${(escape(tweetInput.content.text))}</section>
       <footer>
-        <span class='date'>${tweetInput.created_at}</span>
+        <span class='date'>${(convertEpochDate(tweetInput.created_at))}</span>
         <span class='icons'>
           <i class='fas fa-flag'></i>
           <i class='fas fa-retweet'></i>
