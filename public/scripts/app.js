@@ -6,19 +6,19 @@
 
 $(document).ready(function () {
   function escape(str) {
-    var div = document.createElement('div');
+    const div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   }
 
-function convertEpochDate(epochDate) {
-  let date = new Date(epochDate)
-  date = date.toDateString()
-  return date
-}
+  function convertEpochDate(epochDate) {
+    let date = new Date(epochDate);
+    date = date.toDateString();
+    return date;
+  }
 
   function createTweetElement(tweetInput) {
-    let $tweet = (`
+    const $tweet = (`
     <article class='tweet'>
       <header>
         <span class='avatar'>
@@ -37,44 +37,44 @@ function convertEpochDate(epochDate) {
         </span>
       </footer>
     </article>
-    `)
-    return $tweet
+    `);
+    return $tweet;
   }
 
   function renderTweets(tweets) {
-    $('#tweets-container').empty()
+    $('#tweets-container').empty();
     tweets.forEach(function (tweetData) {
-      let $eachtweet = createTweetElement(tweetData)
+      const $eachtweet = createTweetElement(tweetData);
       $('#tweets-container').prepend($eachtweet); // switch to append if newest last
-    })
+    });
   }
 
   function loadTweets() {
-    $.get("/tweets", function (tweetDB) {
-      renderTweets(tweetDB)
-    })
+    $.get('/tweets', function (tweetDB) {
+      renderTweets(tweetDB);
+    });
   }
 
-  $("#compose").click(function () {
-    $(".new-tweet").slideToggle(function () {
-      $("textarea").focus()
-    })
-  })
+  $('#compose').click(function () {
+    $('.new-tweet').slideToggle(function () {
+      $('textarea').focus();
+    });
+  });
 
-  $("form").submit(function (event) {
+  $('form').submit(function (event) {
     event.preventDefault();
-    let tweetLen = $(this).children("textarea").val().length
+    const tweetLen = $(this).children('textarea').val().length;
     if (tweetLen === 0) {
-      alert("Tweets can't be empty")
+      alert("Tweets can't be empty");
     } else if (tweetLen > 140) {
-      alert("Tweets can't be greater than 140 characters")
+      alert("Tweets can't be greater than 140 characters");
     } else {
-      $.post("/tweets", ($(this).serialize()))
-        .then(loadTweets)
-      $(this).trigger("reset")
-      $(this).children(".counter").text(140)
+      $.post('/tweets', ($(this).serialize()))
+        .then(loadTweets);
+      $(this).trigger('reset');
+      $(this).children('.counter').text(140);
     }
   });
 
   loadTweets();
-})
+});
