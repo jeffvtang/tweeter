@@ -11,10 +11,50 @@ $(document).ready(function () {
     return div.innerHTML;
   }
 
-  function convertEpochDate(epochDate) {
-    let date = new Date(epochDate);
-    date = date.toDateString();
-    return date;
+  function elapsedTime(epochDate) {
+    let timeSeconds = Math.floor((Date.now() - epochDate) / 1000); // returns seconds passed since post
+    const hour = (60 * 60);
+    const day = (hour * 24);
+    const week = (day * 7);
+    let time = 0;
+    if (timeSeconds < 60) {
+      return ('Just now');
+    } else if (timeSeconds < hour) {
+      let time = (Math.floor(timeSeconds / 60));
+      if (time > 1) {
+        return (time + ' minutes ago');
+      } else {
+        return (time + ' minute ago');
+      }
+    } else if (timeSeconds < day) {
+      let time = (Math.floor(timeSeconds / hour));
+      if (time > 1) {
+        return (time + ' hours ago');
+      } else {
+        return (time + ' hour ago');
+      }
+    } else if (timeSeconds < week) {
+      let time = (Math.floor(timeSeconds / day));
+      if (time > 1) {
+        return (time + ' days ago');
+      } else {
+        return (time + ' day ago');
+      }
+    } else if (timeSeconds > (52 * week)) {
+      let time = (Math.floor(timeSeconds / (52 * week)));
+      if (time > 1) {
+        return (time + ' years ago');
+      } else {
+        return (time + ' year ago');
+      }
+    } else {
+      let time = (Math.floor(timeSeconds / week));
+      if (time > 1) {
+        return (time + ' weeks ago');
+      } else {
+        return (time + ' week ago');
+      }
+    }
   }
 
   function createTweetElement(tweetInput) {
@@ -29,7 +69,7 @@ $(document).ready(function () {
       </header>
       <section class='tweet'>${(escape(tweetInput.content.text))}</section>
       <footer>
-        <span class='date'>${(convertEpochDate(tweetInput.created_at))}</span>
+        <span class='date'>${(elapsedTime(tweetInput.created_at))}</span>
         <span class='icons'>
           <i class='fas fa-flag'></i>
           <i class='fas fa-retweet'></i>
