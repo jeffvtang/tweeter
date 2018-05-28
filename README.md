@@ -6,9 +6,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["Screenshot of Main page"]
-!["Screenshot of Tweet when hovered']
-!["Screenshot of Main page with compose hidden']
+!["Screenshot of Main page"](https://github.com/jeffvtang/tweeter/blob/master/docs/main.png)
+!["Screenshot of Tweet when hovered'](https://github.com/jeffvtang/tweeter/blob/master/docs/hovered%20tweet.png)
+!["Screenshot of Main page with compose hidden'](https://github.com/jeffvtang/tweeter/blob/master/docs/compose%20hidden.png)
 
 ## Getting Started
 
